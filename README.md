@@ -1,6 +1,6 @@
 # flutter_avif_native
 
-Flutter widgets and image-provider integration backed by `avif_native`.
+Flutter widgets and image-provider integration backed by [`avif_native`](https://pub.dev/packages/avif_native).
 
 ```dart
 AvifImage.asset('assets/image.avif');

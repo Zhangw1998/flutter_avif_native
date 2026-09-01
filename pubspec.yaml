@@ -1,10 +1,8 @@
 name: flutter_avif_native
 description: Flutter widgets and image providers powered by avif_native.
 version: 0.1.0
-repository: https://github.com/Zhangw1998/avif_native
-issue_tracker: https://github.com/Zhangw1998/avif_native/issues
-publish_to: none
-resolution: workspace
+repository: https://github.com/Zhangw1998/flutter_avif_native
+issue_tracker: https://github.com/Zhangw1998/flutter_avif_native/issues
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
