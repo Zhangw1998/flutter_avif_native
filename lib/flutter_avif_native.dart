@@ -146,7 +146,12 @@ class _AvifImageState extends State<AvifImage> {
       _frame = 0;
     });
     try {
-      final decoded = decodeAvif(await widget._load(context));
+      // Flutter's rgba8888 pixel format is premultiplied, so let libavif
+      // premultiply during YUV-to-RGB conversion.
+      final decoded = decodeAvif(
+        await widget._load(context),
+        premultiplyAlpha: true,
+      );
       final images = <ui.Image>[];
       for (final frame in decoded.frames) {
         images.add(await _rgbaImage(frame));
@@ -233,7 +238,7 @@ class _AvifImageState extends State<AvifImage> {
 }
 
 Future<ui.Codec> _firstFrameCodec(Uint8List bytes) async {
-  final image = decodeAvif(bytes);
+  final image = decodeAvif(bytes, premultiplyAlpha: true);
   final frame = image.frames.first;
   final buffer = await ui.ImmutableBuffer.fromUint8List(frame.rgba);
   final descriptor = ui.ImageDescriptor.raw(
